@@ -10,7 +10,6 @@ import { ImportantDevices } from '@material-ui/icons';
 
 function images() {
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',

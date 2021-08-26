@@ -22,42 +22,66 @@ const favoriteReducer  = (state = [], action) => {
      default: 
         return state;
 }
+}
 
-};
+const homeReducer  = (state = [], action) => {
+    switch (action.type){
+     case 'SET_HOME':
+        return action.payload
+     default: 
+        return state;
+}
+}
 
 //where the function will yeild
 function* watcherSaga() {
-    yield takeEvery('GET_IMAGE', fetchFavorites)
-
+    // yield takeEvery('GET_IMAGE', fetchFavorites)
+    yield takeEvery('GIPHY_SEARCH', giphySearch)
 }
 
-function* fetchFavorites() {
+function* giphySearch(action) {
+    //
+    let search = action.payload;
 
-    try {
-        console.log('bout to fetch me some Images');
+    //Secondary
+    const response = yield axios.get(`/api/search/${search}`);
+    console.log("this is API response.data", response.data.data);
 
-        const response = yield axios.get('/api/favorite')
-            console.log('GET /plants response.data', response.data);
-
-            yield put({
-                type: 'SET_FAVORITE',
-                payload: response.data
-
-            })
-    }
-    catch (err) {
-        console.log('fetchBooks failed', err);
-        alert('There is something seriously wrong 🤮')
-
-    }
+    yield put({
+        type: 'SET_SEARCH',
+        payload: response
+    })
+    
 }
+
+// function* fetchFavorites() {
+
+//     try {
+//         console.log('bout to fetch me some Images');
+
+//         const response = yield axios.get('/api/favorite')
+//             console.log('get response data from /api/favorite', response.data);
+
+//             yield put({
+//                 type: 'SET_FAVORITE',
+//                 payload: response.data
+
+//             })
+//     }
+//     catch (err) {
+//         console.log('fetchBooks failed', err);
+//         alert('There is something seriously wrong 🤮')
+
+//     }
+// }
 
 
 
 
 const store = createStore(
     combineReducers({
-        favoriteReducer 
+        favoriteReducer,
+        homeReducer
     }),
     //The logger is also stored within the store
     applyMiddleware(sagaMiddleware, logger)
