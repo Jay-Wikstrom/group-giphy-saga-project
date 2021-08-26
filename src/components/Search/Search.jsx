@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 function Search (){
-    //const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     // const [search, setSearch] = useState('');
 
@@ -10,6 +10,10 @@ function Search (){
         console.log('Submit works');
 
         //Dispatch here
+        // dispatch({
+        //     type: 'GIPHY_SEARCH',
+        //     payload: search
+        // })
     }
 
     return (
@@ -19,6 +23,7 @@ function Search (){
                 // value={search}
                 // onChange={(e) => setSearch(e.target.value)}
             />
+            
             <button onClick={onSubmit}>Search</button>
         </div>
     )
