@@ -6,9 +6,11 @@ import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { ImportantDevices } from '@material-ui/icons';
-
+import {useSelector} from 'react-redux';
 
 function images() {
+
+let imagestoAppend = useSelector(store => store.homeReducer);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,21 +41,21 @@ const useStyles = makeStyles((theme) => ({
 ///GOES HERE
 
 
-const itemData = [
-  {
-     img: 'https://media3.giphy.com/media/bbshzgyFQDqPHXBo4c/giphy.gif?cid=ecf05e47szpb4da8gw7ur8txm3bw3dlrccda6mk9cxndlat0&rid=giphy.gif&ct=g',
-     title: 'Image'
-   }
-];
+// const itemData = [
+//   {
+//      img: 'https://media3.giphy.com/media/bbshzgyFQDqPHXBo4c/giphy.gif?cid=ecf05e47szpb4da8gw7ur8txm3bw3dlrccda6mk9cxndlat0&rid=giphy.gif&ct=g',
+//      title: 'Image'
+//    }
+// ];
  
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <ImageList rowHeight={200} gap={1} className={classes.imageList}>
-        {itemData.map((item) => (
-          <ImageListItem key={item.img}>
-            <img src={item.img} alt={item.title} />
+        {imagestoAppend.map((item, i) => (
+          <ImageListItem key={item.id}>
+            <img src={item.images.original.url} />
             <ImageListItemBar
               title={item.title}
               position="top"

@@ -48,8 +48,8 @@ function* giphySearch(action) {
     console.log("this is API response.data", response.data.data);
 
     yield put({
-        type: 'SET_SEARCH',
-        payload: response
+        type: 'SET_HOME',
+        payload: response.data.data
     })
     
 }
