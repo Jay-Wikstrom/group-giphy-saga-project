@@ -36,11 +36,27 @@ const homeReducer  = (state = [], action) => {
 //where the function will yeild
 function* watcherSaga() {
     // yield takeEvery('GET_IMAGE', fetchFavorites)
-    yield takeEvery('GIPHY_SEARCH', giphySearch)
+    yield takeEvery('GIPHY_SEARCH', giphySearch),
+    yield takeEvery('ADD_FAVORITES', addFavorites )
 }
 
+
+function* addFavorites(action){
+
+    let favoritesItem = action.payload;
+    console.log(favoritesItem);
+    
+
+  //  const response = yield axios.post(`/api/favorite/${favoritesItem}`)
+       // console.log('Testing response for /POST');
+        
+
+
+}
+
+
 function* giphySearch(action) {
-    //
+    
     let search = action.payload;
 
     //Secondary

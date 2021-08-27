@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
@@ -6,9 +6,14 @@ import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { ImportantDevices } from '@material-ui/icons';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+
 
 function images() {
+  const dispatch = useDispatch()
+
+const [favoriteImage, setFavoriteImage] = useState('');
+
 
 let imagestoAppend = useSelector(store => store.homeReducer);
 
@@ -38,6 +43,8 @@ const useStyles = makeStyles((theme) => ({
  
   const classes = useStyles();
 
+
+
   return (
     <div className={classes.root}>
       <ImageList rowHeight={200} gap={1} className={classes.imageList}>
@@ -48,7 +55,15 @@ const useStyles = makeStyles((theme) => ({
               title={item.title}
               position="top"
               actionIcon={
-                <IconButton aria-label={`star ${item.title}`} className={classes.icon}>
+                <IconButton 
+                  onClick={ () => {
+                    setFavoriteImage( item),
+                     dispatch({
+                      type: 'ADD_FAVORITES',
+                      payload: favoriteImage
+                     })
+                   } }
+                aria-label={`star ${item.title}`} className={classes.icon}>
                   <StarBorderIcon />
                 </IconButton>
               }
