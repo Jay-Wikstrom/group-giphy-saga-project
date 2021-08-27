@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
               actionIcon={
                 <IconButton 
                   onClick={ () => {
-                    setFavoriteImage( item),
+                    setFavoriteImage(item.images.original.url),
                      dispatch({
                       type: 'ADD_FAVORITES',
                       payload: favoriteImage

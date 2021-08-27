@@ -44,12 +44,11 @@ function* watcherSaga() {
 function* addFavorites(action){
 
     let favoritesItem = action.payload;
-    console.log(favoritesItem);
+    console.log('TESING Favorite item ', favoritesItem);
     
 
-  //  const response = yield axios.post(`/api/favorite/${favoritesItem}`)
-       // console.log('Testing response for /POST');
-        
+   const response = yield axios.post(`/api/favorite`, favoritesItem)
+       console.log('Testing response for /POST', response);
 
 
 }
