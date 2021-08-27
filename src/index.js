@@ -47,6 +47,7 @@ function* giphySearch(action) {
     const response = yield axios.get(`/api/search/${search}`);
     console.log("this is API response.data", response.data.data);
 
+    // put saga version of dispatch
     yield put({
         type: 'SET_HOME',
         payload: response.data.data

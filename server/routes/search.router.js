@@ -13,7 +13,8 @@ router.get('/:search', (req, res) => {
         params: {
             //api_key: 
             api_key: process.env.GIPHY_API_KEY,
-            q: req.params.search, //Will need to change later
+            //This is users inputs (data before sent to the internet)
+            q: req.params.search, 
             limit: 12
         }
     }).then(response => {
@@ -24,21 +25,7 @@ router.get('/:search', (req, res) => {
     })
 
 
-    // axios({
-    //     method: 'GET',
-    //     url: 'https://api.giphy.com/v1/gifs/search',
-    //     params: {
-    //         //api_key: 
-    //         api_key: process.env.GIPHY_API_KEY,
-    //         q: 'sports', //Will need to change later
-    //         limit: 12
-    //     }
-    // }).then(response => {
-    //     console.log('axios response', response.data);
-    //     res.send(response.data.data);
-    // }).catch(err => {
-    //     res.sendStatus(500)
-    // })
+  
 })
 
 module.exports = router;

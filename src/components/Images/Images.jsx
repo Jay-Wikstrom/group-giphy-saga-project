@@ -35,18 +35,6 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
   },
 }));
-
-
-///Clear itemData, iterate over redux store full of searched gifs and push to item data
-///GOES HERE
-
-
-// const itemData = [
-//   {
-//      img: 'https://media3.giphy.com/media/bbshzgyFQDqPHXBo4c/giphy.gif?cid=ecf05e47szpb4da8gw7ur8txm3bw3dlrccda6mk9cxndlat0&rid=giphy.gif&ct=g',
-//      title: 'Image'
-//    }
-// ];
  
   const classes = useStyles();
 
